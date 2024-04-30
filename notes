@@ -1,0 +1,19 @@
+my stack:
+- REACT.js for frontend
+- Bootstrap for css
+- flask for backend
+
+---
+
+Website about drivers in F1. They can register to the list and edit some example info abot themselfes. It shows also profiles of teams. 
+Also It can show some latest news about teams or drivers. It fetches it from some news api.
+
+You can see if there's an ongoing race(it shows, let's say whole module about It)
+
+Also It collects data about tracks and can show It.
+
+In the future It can collect data about race stats.
+
+It shows whether given driver was a wc or not and also their stats in races(in progress because It's hard to get the data).
+
+---
