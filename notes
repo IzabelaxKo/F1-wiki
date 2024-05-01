@@ -17,3 +17,13 @@ In the future It can collect data about race stats.
 It shows whether given driver was a wc or not and also their stats in races(in progress because It's hard to get the data).
 
 ---
+
+TODO'S:
+     + edit navbar
+     + add other stuff:
+        - footer
+        - pages for drivers
+        - races plan searcher
+        - place to add drivers
+        - place to add teams
+        - sth that is fetching top 3 articles !!!CONECTED WITH BACKEND
