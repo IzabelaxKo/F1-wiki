@@ -55,20 +55,40 @@ def tracks():
     )
 
 
-# checking whether it's any races and returning them
-@app.route('/races')
-def races():
-    cur_year = dt.datetime.now().year
-    html = r.get(f"https://www.espn.com/f1/schedule/_/year/{cur_year}").text
+# return races from given year
+@app.route('/races/<year>')
+def races(year):
+    # requests to prevent 403 error
+    req_head= {
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36."
+    }
+    # getting the espn page with races info
+    html = r.get(f"https://www.espn.com/f1/schedule/_/year/{year}", headers=req_head).text
+    # getting lxml element to search thru It
+    dom = etree.HTML(html)
+    # container for all races
     races = []
-    print(html)
-    dom = etree.HTML(str(BeautifulSoup(html, "html.parser")))
-    for i in dom.xpath('//*[@id="fittPageContainer"]/div[3]/div/div/div[1]/section/div/div[2]/div/div/div/div[2]/table/tbody/tr[1]'):
-        races.append(i.text.strip())
+    # going thru every tr element
+    for i in dom.xpath('//*[@id="fittPageContainer"]/div[3]/div/div/div[1]/section/div/div[2]/div/div/div/div[2]/table/tbody/tr'):  
+        # container for all the text    
+        all_text = []
+        # going thru every child of the tr element
+        for element in i.iter():
+            # if there's a text you append it to container
+            if element.text:
+                all_text.append(element.text.strip())
+        
+        # adding race info in JSON format
+        races.append({
+            "date": all_text[0],
+            "name": all_text[1],
+            "circuit": all_text[2],
+            "winner": all_text[3] if len(all_text) == 4 else "not yet known"
+        })
 
-    return(
-        # jsonify(races),
-        # 200
+    return(        
+        jsonify(races),
+        200
     )
 
 # PUT
