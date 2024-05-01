@@ -8,8 +8,9 @@ app = Flask(__name__)
 CORS(app)
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///f1.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///formula1.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
 
+app.json.sort_keys = False
 
 db = SQLAlchemy(app)

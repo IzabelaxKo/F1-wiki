@@ -2,11 +2,8 @@ from config import app
 from flask import jsonify, request
 from config import db
 from models import Drivers, Teams, Tracks
-import datetime as dt
-from bs4 import BeautifulSoup
 import requests as r
 from lxml import etree
-
 
 @app.route('/')
 def method_name():
@@ -22,11 +19,11 @@ def method_name():
 # returning drivers
 @app.route('/drivers', methods=['GET'])
 def drivers():
-    res = db.session.query(Drivers).all()
-    json_res = list(map(lambda x: x.to_json(), res))
+    res = Drivers.query.all()
+    json_res = [x.to_json() for x in res]
     
     return(
-        jsonify(json_res), 
+        jsonify({"drivers": json_res}), 
         200
     )
 
@@ -92,16 +89,102 @@ def races(year):
     )
 
 # PUT
-# editing data abt drivers
+# for transfers:
+@app.route('/edit_drivers_team/<int:id>', methods=['GET', 'POST'])
+def edit_driver(id):
+    driver = db.session.query(Drivers).get(id)
+    if driver:
+        driver.team = Teams.query.filter(Teams.name == request.json.get('newTeam')).first().id
+        db.session.commit()        
+    else: 
+        return(
+            jsonify({"msg": "Driver doesn't exist"}), 
+            400
+        )
+    
+    return(
+        jsonify({"msg": "Data edited"}),
+        200
+    )
+
 
 # POST
 # adding drivers
+@app.route('/create_driver', methods=['POST'])
+def create_driver():
+    name = request.json.get('firstName')
+    surname = request.json.get('lastName')
+    birth_date = request.json.get('birth')
+    team = request.json.get('teamName')
+    team_id = Teams.query.filter(Teams.name == team).first().id
+    img_link = request.json.get('img')
+        
+    if Drivers.query.filter(Drivers.name == name and Drivers.surname == surname and Drivers.birth_date == birth_date).first():
+        return(
+            jsonify({"msg": "Driver already exist in the database"}),
+            400
+        )
+    elif not team_id:
+        return(
+            jsonify({"msg": "There's no such team in the database. Solution: You must add It"}),
+            400
+        )
+    else:
+        driver = Drivers(
+            name=name,
+            surname=surname,
+            birth_date=birth_date,
+            team=team_id,
+            img_link=img_link if img_link else ""
+        )
+        try: 
+            db.session.add(driver)
+            db.session.commit()
+        except Exception as e:
+            return(
+                jsonify({"msg": str(e)}),
+                400
+            )
+
+        return(
+            jsonify({"msg": "Driver added successfully"}),
+            200
+        )
+    
+    
+
+
 # adding teams
+@app.route('/create_team', methods=['POST'])
+def create_team():
+    name = request.json.get('name')
+        
+    if Teams.query.filter(Teams.name == name).first():
+        return(
+            jsonify({"msg": "Team already exist in the database"}),
+            400
+        )
+    else:
+        team = Teams(
+            name=name
+        )
+        try: 
+            db.session.add(team)
+            db.session.commit()
+        except Exception as e:
+            return(
+                jsonify({"msg": str(e)}),
+                400
+            )
+            
+        return(
+            jsonify({"msg": "Team added successfully"}),
+            200
+        )
 
 
 
 if __name__ == "__main__":
-    
     with app.app_context():
         db.create_all()
         
