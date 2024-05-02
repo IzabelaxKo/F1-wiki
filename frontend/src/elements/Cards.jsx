@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 export function Cards({cards}){
     return(
-        <div className="grid flex flex-col flex-wrap mt-10 w-3/4">
+        <div className="flex flex-col flex-wrap mt-10 w-fit">
             <div className="text-5xl text-left font-bold mb-7">Check out the latest news:</div>
             <div id='infos' className="flex flex-wrap">
                 {cards.map((info, ind) =>
