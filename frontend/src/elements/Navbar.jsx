@@ -1,9 +1,10 @@
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 const navigation = [
-  { name: 'Dashboard', href: '/', current: true },
+  { name: 'Dashboard', href: '/', current: false },
   { name: 'Teams', href: '/teams', current: false },
   { name: 'Drivers', href: '/drivers', current: false },
   { name: 'Calendar', href: '/calendar', current: false },
@@ -13,7 +14,15 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export function Navbar() {
+export function Navbar({cur}) {
+
+  navigation.forEach(el => {
+    if(el.name == cur){
+      el.current = true;
+    }
+    else el.current = false;
+  });
+
   return (
     <Disclosure as="nav" className="bg-indigo-800c">
       {({ open }) => (
@@ -85,4 +94,8 @@ export function Navbar() {
       )}
     </Disclosure>
   )
+}
+
+Navbar.propTypes ={
+  cur: PropTypes.string
 }
