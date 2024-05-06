@@ -8,7 +8,7 @@ export function Card({title, short_text, img, classes}){
             <h2 className="card-title">{title}</h2>
             <p>{short_text}</p>
             <div className="card-actions justify-end">
-            <button className="btn btn-primary">See more »</button>
+            <button className="btn btn-primary w-2/5">See more »</button>
             </div>
         </div>
         </div>

@@ -1,5 +1,5 @@
 import ioxLogo from '../assets/iox-logo-transparent.png'
-import '../App.css'
+import '../pages/App.css'
 
 export function Footer(){
     return(
