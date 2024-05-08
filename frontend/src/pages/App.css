@@ -6,3 +6,8 @@ img{
   width: 100px;
   height: 100px;
 }
+
+.take-year{
+  background-color: rgba(255, 0, 0, 0.3);
+  color: white;
+}

@@ -6,11 +6,17 @@ import { Loader } from "../../components/ui/loader";
 
 const img = [
     'https://i.pinimg.com/originals/14/18/dd/1418dddb19ee00fb9fe64c9d99167c71.jpg'
-]
+];
+
+const cur_year = new Date().getFullYear()
+
+var years = [];
+for(let i=1994; i<cur_year; i++) {years.push(i);}
 
 export function CalendarPage(){
     const [callendar, setCallendar] = useState([]);
     const [isData, setIsData] = useState(false);
+    const [curYear, setCurYear] = useState(cur_year);
     
     const fetchCallendar = async (year) =>{
         if(!isData){
@@ -22,8 +28,12 @@ export function CalendarPage(){
     }
 
     useEffect(()=>{
-        fetchCallendar(2024);
+        fetchCallendar(curYear);
     }, [callendar]);
+
+    const newYear = () =>{
+        
+    }
 
 
     return(
@@ -31,6 +41,16 @@ export function CalendarPage(){
             <Navbar cur='Calendar'></Navbar>
             <MainHeader images={img} text="Callendars"></MainHeader>
             <div className="flex flex-col items-center w-full mt-10">
+                <div className="flex justify-between w-3/4 border p-5 mb-5 take-year">
+                    <div className="text-xl">You can also get the previous years callendar: </div>
+                    <select name="date_select">
+                        <option value={curYear} defaultChecked={true}>{curYear}</option>               
+                    {years.map((i)=>
+                        <option key={i} value={i}>{i}</option>
+                    )} 
+                    </select>
+                    <button onClick={newYear}>Get</button>
+                </div>
                 <h1 className="font-bold text-5xl mb-7">Current year callendar:</h1>
                     {isData ?  
                         <table className="border-collapse border w-3/4">
@@ -54,7 +74,7 @@ export function CalendarPage(){
                                             </tr>
                                         );
                                     }
-                                })} 
+                                })}
                             </tbody>
                         </table> 
                     : <Loader></Loader>
