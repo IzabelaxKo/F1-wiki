@@ -11,7 +11,7 @@ const img = [
 const cur_year = new Date().getFullYear()
 
 var years = [];
-for(let i=1994; i<cur_year; i++) {years.push(i);}
+for(let i=cur_year; i>=1994; i--) {years.push(i);}
 
 export function CalendarPage(){
     const [callendar, setCallendar] = useState([]);
@@ -29,10 +29,13 @@ export function CalendarPage(){
 
     useEffect(()=>{
         fetchCallendar(curYear);
-    }, [callendar]);
+        console.log(curYear);
+        console.log(isData);
+    }, []);
 
-    const newYear = () =>{
-        
+    const handleChange = (event) => {
+        setIsData(false);
+        setCurYear(event.target.value);
     }
 
 
@@ -43,13 +46,11 @@ export function CalendarPage(){
             <div className="flex flex-col items-center w-full mt-10">
                 <div className="flex justify-between w-3/4 border p-5 mb-5 take-year">
                     <div className="text-xl">You can also get the previous years callendar: </div>
-                    <select name="date_select">
-                        <option value={curYear} defaultChecked={true}>{curYear}</option>               
+                    <select id="date_select" onChange={handleChange}>      
                     {years.map((i)=>
                         <option key={i} value={i}>{i}</option>
                     )} 
                     </select>
-                    <button onClick={newYear}>Get</button>
                 </div>
                 <h1 className="font-bold text-5xl mb-7">Current year callendar:</h1>
                     {isData ?  

@@ -3,39 +3,41 @@ import { MainHeader } from "../elements/MainHeader.jsx"
 import { Navbar } from "../elements/Navbar.jsx"
 import { Cards } from '../elements/Cards.jsx'
 import { Footer } from '../elements/Footer.jsx'
+import { useState, useEffect } from 'react'
+import { Loader } from '../../components/ui/loader.jsx'
 
-const ex_info = [
-  {
-    "title": "example",
-    "text": "example more",
-    "img": "https://i.pinimg.com/736x/20/b4/52/20b452bf37cd1329950072bec30a81b5.jpg"
-  },
-  {
-    "title": "example",
-    "text": "example more",
-    "img": "https://i.pinimg.com/736x/20/b4/52/20b452bf37cd1329950072bec30a81b5.jpg"
-  },
-  {
-    "title": "example",
-    "text": "example more",
-    "img": "https://i.pinimg.com/736x/20/b4/52/20b452bf37cd1329950072bec30a81b5.jpg"
-  },
-  {
-    "title": "example",
-    "text": "example more",
-    "img": "https://i.pinimg.com/736x/20/b4/52/20b452bf37cd1329950072bec30a81b5.jpg"
-  },
-  {
-    "title": "example",
-    "text": "example more",
-    "img": "https://i.pinimg.com/736x/20/b4/52/20b452bf37cd1329950072bec30a81b5.jpg"
-  },
-  {
-    "title": "example",
-    "text": "example more",
-    "img": "https://i.pinimg.com/736x/20/b4/52/20b452bf37cd1329950072bec30a81b5.jpg"
-  }
-]
+// const ex_info = [
+//   {
+//     "title": "example",
+//     "text": "example more",
+//     "img": "https://i.pinimg.com/736x/20/b4/52/20b452bf37cd1329950072bec30a81b5.jpg"
+//   },
+//   {
+//     "title": "example",
+//     "text": "example more",
+//     "img": "https://i.pinimg.com/736x/20/b4/52/20b452bf37cd1329950072bec30a81b5.jpg"
+//   },
+//   {
+//     "title": "example",
+//     "text": "example more",
+//     "img": "https://i.pinimg.com/736x/20/b4/52/20b452bf37cd1329950072bec30a81b5.jpg"
+//   },
+//   {
+//     "title": "example",
+//     "text": "example more",
+//     "img": "https://i.pinimg.com/736x/20/b4/52/20b452bf37cd1329950072bec30a81b5.jpg"
+//   },
+//   {
+//     "title": "example",
+//     "text": "example more",
+//     "img": "https://i.pinimg.com/736x/20/b4/52/20b452bf37cd1329950072bec30a81b5.jpg"
+//   },
+//   {
+//     "title": "example",
+//     "text": "example more",
+//     "img": "https://i.pinimg.com/736x/20/b4/52/20b452bf37cd1329950072bec30a81b5.jpg"
+//   }
+// ]
 
 const images = [
   'https://media.formula1.com/image/upload/t_16by9North/f_auto/q_auto/v1706626658/fom-website/2023/Miscellaneous/GettyImages-1656999898.jpg',
@@ -44,11 +46,30 @@ const images = [
 ];
 
 function App() {
+  const [news, setNews] = useState([]);
+  const [isData, setIsData] = useState(false);
+
+  const fetchData = async ()=>{   
+      if(!isData){
+          const resp = await fetch(`http://127.0.0.1:5000/fetch_news`);
+          const data  = await resp.json();
+          setNews(data);
+          setIsData(true);
+  }
+  }
+
+  useEffect(()=>{
+      fetchData();
+  }, []);
+
+
+
   return (
     <>
       <Navbar cur='Dashboard'/>
       <MainHeader images={images} isMain={true} text={'Your main source for Formula 1 information'}/>
-      <Cards cards={ex_info}/>
+      {isData ? <Cards cards={news}/> : <div className='w-full flex items-center justify-center m-10'><Loader/></div>
+      }
       <Footer/>
     </>
   );

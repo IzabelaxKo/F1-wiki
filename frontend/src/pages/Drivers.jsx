@@ -44,6 +44,8 @@ export function DriversPage(){
                                 short_text={`Team: ${d.team},\nDate of birth: ${d.birth_date}`} 
                                 img={d.img_link} 
                                 key={id} 
+                                classes="mb-5 md:ml-5"
+                                is_btn={false}
                             ></Card>
                         )}
                     </div>

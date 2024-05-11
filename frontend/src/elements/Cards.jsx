@@ -10,9 +10,11 @@ export function Cards({cards}){
                     <Card 
                         key={ind}
                         title={info.title}
-                        short_text={info.text}
-                        img={info.img}
+                        short_text={info.description}
+                        img={info.urlToImage}
+                        link_to={info.url}
                         classes="mb-5 md:ml-5"
+                        is_btn={true}
                     ></Card>
                 )}
             </div>
