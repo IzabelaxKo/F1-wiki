@@ -19,23 +19,23 @@ export function CalendarPage(){
     const [curYear, setCurYear] = useState(cur_year);
     
     const fetchCallendar = async (year) =>{
-        if(!isData){
-            const resp = await fetch(`http://127.0.0.1:5000/races/${year}`);
-            const data  = await resp.json();
-            setCallendar(data);
-            setIsData(true);
-        }
+        const resp = await fetch(`http://127.0.0.1:5000/races/${year}`);
+        const data  = await resp.json();
+        setCallendar(data);
+        setIsData(true);
     }
 
     useEffect(()=>{
-        fetchCallendar(curYear);
-        console.log(curYear);
-        console.log(isData);
+        if(!isData){
+            fetchCallendar(curYear);
+        }
     }, []);
 
-    const handleChange = (event) => {
+    const handleChange = () => {
+        let ev = document.getElementById('select').value;
+        setCurYear(ev);
         setIsData(false);
-        setCurYear(event.target.value);
+        fetchCallendar(ev);
     }
 
 
@@ -44,14 +44,6 @@ export function CalendarPage(){
             <Navbar cur='Calendar'></Navbar>
             <MainHeader images={img} text="Callendars"></MainHeader>
             <div className="flex flex-col items-center w-full mt-10">
-                <div className="flex justify-between w-3/4 border p-5 mb-5 take-year">
-                    <div className="text-xl">You can also get the previous years callendar: </div>
-                    <select id="date_select" onChange={handleChange}>      
-                    {years.map((i)=>
-                        <option key={i} value={i}>{i}</option>
-                    )} 
-                    </select>
-                </div>
                 <h1 className="font-bold text-5xl mb-7">Current year callendar:</h1>
                     {isData ?  
                         <table className="border-collapse border w-3/4">
@@ -80,6 +72,15 @@ export function CalendarPage(){
                         </table> 
                     : <Loader></Loader>
                     }
+                <div className="flex mt-5 w-full justify-around">
+                    <select className="select select-error w-full max-w-xs" id='select'>
+                        <option disabled selected>You can also get the previous years</option>
+                            {years.map((i)=>
+                                <option key={i} value={i}>{i}</option>
+                            )} 
+                    </select>
+                    <button className="btn btn-outline btn-error" onClick={handleChange}>Check this</button>
+                </div>
             </div>
             <Footer></Footer>
         </>
