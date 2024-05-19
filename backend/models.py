@@ -34,6 +34,8 @@ class Teams(db.Model):
     
     id: Mapped[int] = mapped_column(Integer, nullable=False, primary_key=True,  autoincrement=True)
     name: Mapped[str] = mapped_column(String, nullable=False)
+    about: Mapped[str] = mapped_column(String, nullable=False)
+    img: Mapped[str] = mapped_column(String, nullable=False)
     
     def __repr__(self) -> str:
         return f"{self.id}. {self.name}"
@@ -42,9 +44,10 @@ class Teams(db.Model):
         return {
             "id": self.id,
             "name": self.name,
+            "about": self.about,
+            "img": self.img
         }
 
-    
 class Championships(db.Model):
     __tablename__ = 'championships'
     

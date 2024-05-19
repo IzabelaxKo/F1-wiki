@@ -87,6 +87,16 @@ def races(year):
         jsonify(races),
         200
     )
+    
+@app.route('/fetch_news')
+def fetch_news():
+    link = r.get("https://newsapi.org/v2/everything?q=f1&apiKey=bb4c490d56d94a0783e41f6b11c52db0").json()['articles']
+    data = [link[x] for x in range(10)]
+    return(
+        jsonify(data),
+        200
+    )
+    
 
 # PUT
 # for transfers:
@@ -158,6 +168,8 @@ def create_driver():
 @app.route('/create_team', methods=['POST'])
 def create_team():
     name = request.json.get('name')
+    about = request.json.get('about')
+    img = request.json.get('img')
         
     if Teams.query.filter(Teams.name == name).first():
         return(
@@ -166,7 +178,9 @@ def create_team():
         )
     else:
         team = Teams(
-            name=name
+            name=name,
+            about=about,
+            img=img
         )
         try: 
             db.session.add(team)

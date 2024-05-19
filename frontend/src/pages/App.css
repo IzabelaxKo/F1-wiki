@@ -1,0 +1,14 @@
+img{
+  width: 100em;
+}
+
+.footerLogo{
+  width: 100px;
+  height: 100px;
+  filter: invert(100%);
+}
+
+.take-year{
+  background-color: rgba(255, 0, 0, 0.3);
+  color: white;
+}
