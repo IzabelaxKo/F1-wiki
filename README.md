@@ -13,9 +13,9 @@
 <h2>Overview: </h2>
 <p>Below you have linkis to certain YT videos showing how this page works</p>
 <ol>
-  <li><a href='https://youtu.be/rd1kOZ6-Sg8'>Page overview - everything that user sees</a></li>
-  <li><a href='https://youtu.be/u8QQMYFt2OM'>Adding new drivers - admin can do this</a></li>
-  <li><a href='https://youtu.be/-x9_E5Cfg7w'>Adding new teams - admin can do this</a></li>
+  <li><a href='https://youtu.be/rd1kOZ6-Sg8' target='_blank'>Page overview - everything that user sees</a></li>
+  <li><a href='https://youtu.be/u8QQMYFt2OM' target='_blank'>Adding new team - admin can do this</a></li>
+  <li><a href='https://youtu.be/-x9_E5Cfg7w' target='_blank'>Adding new driver - admin can do this</a></li>
 </ol>
 
 <hr>
