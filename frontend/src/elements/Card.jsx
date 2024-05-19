@@ -10,7 +10,7 @@ export function Card({title, short_text, img, classes, link_to, is_btn}){
             <p style={{whiteSpace: "pre-wrap"}}>{short_text}</p>
             <div className="card-actions justify-end">
             {is_btn &&
-                <button className="btn btn-primary w-2/5"><a href={link_to} target='_blank'>See more »</a></button>
+                <button className="btn btn-error text-white w-2/5"><a href={link_to} target='_blank'>See more »</a></button>
             }
             </div>
         </div>

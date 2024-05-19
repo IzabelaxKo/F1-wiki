@@ -3,7 +3,7 @@ import '../pages/App.css'
 
 export function Footer(){
     return(
-        <footer className="footer footer-center p-10 bg-primary text-primary-content mt-10">
+        <footer className="footer footer-center p-10 bg-red-600 text-slate-50 mt-10">
             <aside>
                 <img src={ioxLogo} alt="iox logo" className='footerLogo'/>
                 <p className="font-bold">

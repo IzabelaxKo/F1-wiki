@@ -45,6 +45,15 @@ export function CalendarPage(){
             <MainHeader images={img} text="Callendars"></MainHeader>
             <div className="flex flex-col items-center w-full mt-10">
                 <h1 className="font-bold text-5xl mb-7">Current year callendar:</h1>
+                <div className="flex mb-5 w-full justify-around">
+                    <select className="select select-error w-full max-w-xs" id='select'>
+                        <option disabled selected>You can also get the previous years</option>
+                            {years.map((i)=>
+                                <option key={i} value={i}>{i}</option>
+                            )} 
+                    </select>
+                    <button className="btn btn-outline btn-error" onClick={handleChange}>Check this</button>
+                </div>
                     {isData ?  
                         <table className="border-collapse border w-3/4">
                             <thead>
@@ -72,15 +81,6 @@ export function CalendarPage(){
                         </table> 
                     : <Loader></Loader>
                     }
-                <div className="flex mt-5 w-full justify-around">
-                    <select className="select select-error w-full max-w-xs" id='select'>
-                        <option disabled selected>You can also get the previous years</option>
-                            {years.map((i)=>
-                                <option key={i} value={i}>{i}</option>
-                            )} 
-                    </select>
-                    <button className="btn btn-outline btn-error" onClick={handleChange}>Check this</button>
-                </div>
             </div>
             <Footer></Footer>
         </>

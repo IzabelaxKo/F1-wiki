@@ -6,39 +6,6 @@ import { Footer } from '../elements/Footer.jsx'
 import { useState, useEffect } from 'react'
 import { Loader } from '../../components/ui/loader.jsx'
 
-// const ex_info = [
-//   {
-//     "title": "example",
-//     "text": "example more",
-//     "img": "https://i.pinimg.com/736x/20/b4/52/20b452bf37cd1329950072bec30a81b5.jpg"
-//   },
-//   {
-//     "title": "example",
-//     "text": "example more",
-//     "img": "https://i.pinimg.com/736x/20/b4/52/20b452bf37cd1329950072bec30a81b5.jpg"
-//   },
-//   {
-//     "title": "example",
-//     "text": "example more",
-//     "img": "https://i.pinimg.com/736x/20/b4/52/20b452bf37cd1329950072bec30a81b5.jpg"
-//   },
-//   {
-//     "title": "example",
-//     "text": "example more",
-//     "img": "https://i.pinimg.com/736x/20/b4/52/20b452bf37cd1329950072bec30a81b5.jpg"
-//   },
-//   {
-//     "title": "example",
-//     "text": "example more",
-//     "img": "https://i.pinimg.com/736x/20/b4/52/20b452bf37cd1329950072bec30a81b5.jpg"
-//   },
-//   {
-//     "title": "example",
-//     "text": "example more",
-//     "img": "https://i.pinimg.com/736x/20/b4/52/20b452bf37cd1329950072bec30a81b5.jpg"
-//   }
-// ]
-
 const images = [
   'https://media.formula1.com/image/upload/t_16by9North/f_auto/q_auto/v1706626658/fom-website/2023/Miscellaneous/GettyImages-1656999898.jpg',
   'https://media.formula1.com/content/dam/fom-website/manual/Misc/TeamByTeam2023/ferrari-tbt-2023.png',

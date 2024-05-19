@@ -35,7 +35,7 @@ export function TeamsPage(){
             ></MainHeader>
             {isData ? 
             <div className="flex flex-col flex-wrap mt-10 w-full">
-                <div className="md:text-5xl sm:text-3xl text-2xl font-bold mb-7 text-center">Our list of F1 drivers:</div>
+                <div className="md:text-5xl sm:text-3xl text-2xl font-bold mb-7 text-center">Our list of F1 Teams:</div>
                     <div id='infos' className="flex flex-wrap w-full justify-center">
                         {teams.map((d, id) =>
                             <Card 
