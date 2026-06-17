@@ -1,14 +1,9 @@
-import ioxLogo from '../assets/iox-logo-transparent.png'
 import '../pages/App.css'
 
 export function Footer(){
     return(
         <footer className="footer footer-center p-10 bg-red-600 text-slate-50 mt-10">
             <aside>
-                <img src={ioxLogo} alt="iox logo" className='footerLogo'/>
-                <p className="font-bold">
-                IOX Industries Ltd. <br/>Best websites on the internet
-                </p> 
                 <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
             </aside> 
             <nav>
