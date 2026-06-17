@@ -1,23 +1,61 @@
-<h1>FORMULA 1 WIKIPEDIA</h1>
-<h5>Below you can see what you will find in this readme: </h5>
-<ul>
-  <li>My motivation in creating this project</li>
-  <li>Overview of the page</li>
-</ul>
+# FORMULA 1 WIKIPEDIA
 
-<h2>My motivation:</h2>
-<p>So why did I create THIS project? I wanted to enhance my skills in backend and frontend. I haven't seen any page like this so I decided to do so. I really love F1 so why not?</p>
-<p>I did this project in about 2 weeks combining It with school, gym and learning</p>
-<p>I consider this project really helpful and I'm not gonna stop!</p>
+## Table of Contents
+1. [My Motivation](#my-motivation)
+2. [Overview](#overview)
+3. [How to Run It](#how-to-run-it)
 
-<h2>Overview: </h2>
-<p>Below you have linkis to certain YT videos showing how this page works</p>
-<ol>
-  <li><a href='https://youtu.be/rd1kOZ6-Sg8' target='_blank'>Page overview - everything that user sees</a></li>
-  <li><a href='https://youtu.be/u8QQMYFt2OM' target='_blank'>Adding new team - admin can do this</a></li>
-  <li><a href='https://youtu.be/-x9_E5Cfg7w' target='_blank'>Adding new driver - admin can do this</a></li>
-</ol>
+---
 
-<hr>
-I know this project have much to improve but for now I think It's okay. <br/>
-If you want to contact me do it via Discord - <b>zikea_</b> or via Twitter - <b>izabe_xa</b>
+## My Motivation
+I built this project to challenge myself and level up my full-stack development skills, specifically focusing on building a seamless connection between the frontend and backend. As a massive Formula 1 fan, I wanted a platform that organized F1 data exactly the way I envisioned, and since I couldn't find quite what I was looking for, I decided to build it myself.
+
+## Overview
+Below you have links to certain YT videos showing how this page works:
+
+* [Page Overview](https://youtu.be/rd1kOZ6-Sg8) - Everything that the user sees.
+* [Adding New Team](https://youtu.be/u8QQMYFt2OM) - Admin can do this.
+* [Adding New Driver](https://youtu.be/-x9_E5Cfg7w) - Admin can do this.
+
+*I know this project has much to improve, but for now, I think it's okay.*
+
+## How to Run It
+You can easily download and run this project locally on your machine. 
+
+**Prerequisite:** Make sure you have [Node.js](https://nodejs.org/) and [Python](https://www.python.org/downloads/) installed.
+
+**1. Download the project**
+Open your terminal and clone the repository:
+```bash
+git clone https://github.com/IzabelaxKo/F1-wiki.git
+```
+
+**2. Open the projects frontend folder**
+```bash
+cd F1-wiki
+```
+
+**3. Install dependencies**
+```bash
+npm install
+```
+
+**4. Start the application**
+```bash
+npm run dev
+```
+
+**5. Go to backend**
+```bash
+cd ..\backend
+```
+
+**6. Install python requirements**
+```bash
+pip install -r requirements.txt
+```
+
+**7. Start the backend application**
+```bash
+python main.py
+```
